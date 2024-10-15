@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active {
+    font-size: 2vw;
+}
+
+.cat {
+    margin: 2vw;
+    background: #9ca3af;
+    border-radius: 2rem;
+    padding: 2vw;
+}
