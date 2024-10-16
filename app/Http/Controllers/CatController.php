@@ -21,7 +21,7 @@ class CatController extends Controller
      */
     public function create() // products/create
     {
-        //
+        return view('create');
     }
 
     /**
@@ -29,7 +29,16 @@ class CatController extends Controller
      */
     public function store(Request $request) // products
     {
-        //
+        $cat = new Cat();
+        $cat->name = $request->input('name');
+        $cat->description = $request->input('description');
+        $cat->image = 1;
+        $cat->user_id = auth()->user()->id;
+        $cat->active = 1;
+
+        $cat->save();
+
+        return redirect()->route('cats-list.index');
     }
 
     /**
@@ -38,9 +47,7 @@ class CatController extends Controller
     public function show(string $id)
     {
         $cat = Cat::findOrFail($id);
-        return view('show', [
-            'cat' => $cat,
-        ]);
+        return view('show', compact('cat'));
     }
 
     /**
@@ -64,6 +71,8 @@ class CatController extends Controller
      */
     public function destroy(Cat $cat)
     {
-        //
+        dd($cat);
+        $cat->delete();
+        return redirect()->route('cats-list.index');
     }
 }

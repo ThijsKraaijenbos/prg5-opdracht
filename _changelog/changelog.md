@@ -1,5 +1,7 @@
 <img src="./changelog_img/changelog.png" alt="drawing" width="200"/>
 
+**16/10/2024** - Delete feature toegevoegd. Details pagina gefixt. Logout feature werkt nu.
+
 **15/10/2024** - Basislijst van de pagina's aangemaakt (qua benodigde views). + Test features met components (gisteren al gedaan, maar
 vergeten te committen) en de basics van models 
 
