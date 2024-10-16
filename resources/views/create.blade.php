@@ -9,8 +9,8 @@
         <x-input-label for="description">Description</x-input-label>
         <x-text-input type="text" name="description" id="description"/>
 
-        <x-input-label for="image" accept="image/png, image/jpg, image/jpeg">Image</x-input-label>
-        <x-text-input type="file" name="image" id="image"/>
+        <x-input-label for="image">Image</x-input-label>
+        <x-text-input type="file" name="image" id="image" accept="image/png, image/jpg, image/jpeg"/>
 
         <x-primary-button type="submit">Create</x-primary-button>
     </form>
