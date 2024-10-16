@@ -12,17 +12,7 @@ class CatController extends Controller
      */
     public function index() // localhost/cats
     {
-//        $cat = Cat::find(1);
-
         $cats = Cat::all();
-
-//        $cat = new Cat();
-//        $cat-> user_id = 1;
-//        $cat-> name = "Luna";
-//        $cat-> description = "test123";
-//        $cat-> image = "nee";
-//        $cat-> active = "1";
-
         return view('catslist', compact('cats'));
     }
 
@@ -47,7 +37,7 @@ class CatController extends Controller
      */
     public function show(string $id)
     {
-        $cat = Cat::find($id);
+        $cat = Cat::findOrFail($id);
         return view('show', [
             'cat' => $cat,
         ]);

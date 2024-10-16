@@ -4,7 +4,6 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CatController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ListController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +21,6 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-//Route::get('/cats-list', [ListController::class, 'index'])->name('cats-list');
 Route::get('/about',  [AboutController::class, 'index'])->name('about');
 Route::get('/contact',  [ContactController::class, 'index'])->name('contact');
 

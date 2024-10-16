@@ -1,5 +1,5 @@
 <x-nav>
 </x-nav>
-<x-layout>
+<x-layout pagename="Homepagina">
     <p>Dit is de homepage</p>
 </x-layout>

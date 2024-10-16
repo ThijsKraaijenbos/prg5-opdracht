@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 .active {
-    font-size: 2vw;
+    background-color: coral !important;
 }
+.big {
+    font-size: 2rem;
+}
+
 
 .cat {
     margin: 2vw;
