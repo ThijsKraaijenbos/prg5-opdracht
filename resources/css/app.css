@@ -5,14 +5,3 @@
 .active {
     background-color: coral !important;
 }
-.big {
-    font-size: 2rem;
-}
-
-
-.cat {
-    margin: 2vw;
-    background: #9ca3af;
-    border-radius: 2rem;
-    padding: 2vw;
-}

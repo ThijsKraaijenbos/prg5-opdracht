@@ -8,7 +8,7 @@
     @isset($pagename)<title>{{$pagename}}</title>@endisset
     @vite('resources/css/app.css')
 </head>
-<body>
+<body  class="bg-bluebg">
     {{ $slot }}
 </body>
 </html>

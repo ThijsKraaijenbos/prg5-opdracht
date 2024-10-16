@@ -32,9 +32,22 @@ class CatController extends Controller
         $cat = new Cat();
         $cat->name = $request->input('name');
         $cat->description = $request->input('description');
-        $cat->image = 1;
+
+        $path = $request->file('image')->getRealPath();
+        $image = file_get_contents($path);
+        $base64 = base64_encode($image);
+        $cat->image = $base64;
+
         $cat->user_id = auth()->user()->id;
         $cat->active = 1;
+
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required|min:10',
+            'image' => 'required|file|max:2048',
+//            'user_id' => 'required',
+//            'active' => 'required',
+        ]);
 
         $cat->save();
 
@@ -71,7 +84,6 @@ class CatController extends Controller
      */
     public function destroy(Cat $cat)
     {
-        dd($cat);
         $cat->delete();
         return redirect()->route('cats-list.index');
     }

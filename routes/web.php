@@ -24,4 +24,4 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about',  [AboutController::class, 'index'])->name('about');
 Route::get('/contact',  [ContactController::class, 'index'])->name('contact');
 
-Route::resource('cats-list',  CatController::class);
+Route::resource('cats',  CatController::class)->names('cats-list');
