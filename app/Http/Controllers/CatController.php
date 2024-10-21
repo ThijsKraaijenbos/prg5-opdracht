@@ -12,7 +12,7 @@ class CatController extends Controller
      */
     public function index() // localhost/cats
     {
-        $cats = Cat::all();
+        $cats = Cat::with('user')->get();
         return view('catslist', compact('cats'));
     }
 
@@ -44,7 +44,7 @@ class CatController extends Controller
         $base64 = base64_encode($image);
         $cat->image = $base64;
 
-        $cat->user_id = auth()->user()->id;
+        $cat->user_id = auth()->id();
         $cat->active = 1;
 
         $cat->save();
@@ -66,7 +66,11 @@ class CatController extends Controller
      */
     public function edit(Cat $cat)
     {
-        //
+        if($cat->user_id !== auth()->id()) {
+            abort(403);
+        } else{
+            return view('edit' , compact('cat'));
+        }
     }
 
     /**

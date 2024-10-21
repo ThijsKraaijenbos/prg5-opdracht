@@ -25,3 +25,4 @@ Route::get('/about',  [AboutController::class, 'index'])->name('about');
 Route::get('/contact',  [ContactController::class, 'index'])->name('contact');
 
 Route::resource('cats',  CatController::class)->names('cats-list');
+Route::resource('admin',  AdminController::class)->names('admin');

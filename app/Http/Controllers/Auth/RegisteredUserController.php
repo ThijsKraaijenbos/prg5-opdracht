@@ -36,15 +36,20 @@ class RegisteredUserController extends Controller
                 'password' => ['required', 'confirmed', Rules\Password::defaults()],
             ],
             [
-                'name.alpha' => "The name field must only contain letters and numbers. (No spaces)"
+                'name.alpha_num' => "The name field must only contain letters and numbers. (No spaces)"
             ]
 
         );
+
+        $path = '../resources/img/default_pfp.jpg';
+        $image = file_get_contents($path);
+        $base64 = base64_encode($image);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'image' => $base64
         ]);
 
         event(new Registered($user));

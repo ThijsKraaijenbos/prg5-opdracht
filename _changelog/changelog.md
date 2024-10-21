@@ -1,5 +1,9 @@
 <img src="./changelog_img/changelog.png" alt="drawing" width="200"/>
 
+**21/10/2024** - Delete & edit knop zijn alleen te zien als je bent ingelogd als de eigenaar van die specifieke kat. + Profile images toegevoegd die worden geladen op de katten op de show page.
+
+**18/10/2024** - Katten die je zelf hebt toegevoegd worden nu ook geladen op de profile pagina
+
 **16/10/2024** - Images kunnen nu geupload worden en worden correct geladen. + katten worden alleen geladen als ze actief zijn.<br>
 **16/10/2024** - Delete feature toegevoegd. Details pagina gefixt. Logout feature werkt nu.
 
