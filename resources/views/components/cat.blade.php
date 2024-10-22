@@ -3,12 +3,11 @@
     'list'
 ])
 <?php $list = $list ?? "" ?>
-<div class='cc-2 m-5 bg-cc-2 text-slate-50 p-5 border-[3] border-slate-50 rounded-2xl grid grid-cols-2'>
+<div class='cc-2 m-5 bg-cc-2 text-slate-50 p-5 border-[3px] border-slate-50 rounded-2xl grid grid-cols-2'>
     <div>
     <h1>Name: {{$cat->name}}</h1>
     <p>Description: {{$cat->description}}</p>
     <img class="h-60 w-60 " src="data:image/webp;base64, {{$cat->image}}" alt="Image of {{$cat->name}}">
-    <p>Active: {{$cat->active ? 'True' : ''}}</p>
     @auth
         <a class="font-medium text-2xl text-blue-200 hover:underline" href="{{ $list ? route('cats-list.show', $cat->id) : route('cats-list.index') }}">{{$list ? 'Details' : 'Go back'}}</a>
         @if($list != "" && auth()->id() === $cat->user_id)

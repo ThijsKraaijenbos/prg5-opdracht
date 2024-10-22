@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CatController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;

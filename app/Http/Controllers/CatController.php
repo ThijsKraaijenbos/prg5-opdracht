@@ -12,7 +12,7 @@ class CatController extends Controller
      */
     public function index() // localhost/cats
     {
-        $cats = Cat::with('user')->get();
+        $cats = Cat::all();
         return view('catslist', compact('cats'));
     }
 
