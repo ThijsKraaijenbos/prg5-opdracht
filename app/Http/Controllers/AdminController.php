@@ -9,7 +9,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        if (strtolower(auth()->user()->role) === "admin") {
+        if (auth()->user() !== null && strtolower(auth()->user()->role) === "admin") {
             $cats = Cat::all();
             return view('admin.index', compact('cats'));
         } else {
@@ -19,10 +19,8 @@ class AdminController extends Controller
 
     public function update(string $id)
     {
-        // Find the Cat by ID
-        $cat = Cat::findOrFail($id);
+        $cat = Cat::find($id);
 
-        // Toggle the active status
         $cat->active = !$cat->active;
 
         // Save the updated model

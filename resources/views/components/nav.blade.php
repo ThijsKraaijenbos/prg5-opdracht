@@ -1,6 +1,8 @@
 <nav class="p-2 flex flex-row items-start">
     <x-navlink href="/" :active="request()->is('/')" big="big">Home</x-navlink>
-    <x-navlink href="{{ route('cats-list.index') }}" :active="request()->is('cats') || request()->is('cats/*' && !request()->is('cats/create'))">Cats</x-navlink>
+    <x-navlink href="{{ route('cats-list.index') }}"
+               :active="request()->is('cats') || request()->is('cats/*' && !request()->is('cats/create'))">Cats
+    </x-navlink>
     <x-navlink href="{{ route('about') }}" :active="request()->is('about')">About</x-navlink>
 
     @guest
@@ -19,7 +21,6 @@
             <button class="bg-blue-100 px-4 py-1 rounded-xl m-2" type="submit">{{ __('Log Out') }}</button>
         </form>
     @endauth
-
 
 
 </nav>
