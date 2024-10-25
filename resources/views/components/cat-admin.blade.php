@@ -15,7 +15,7 @@
         <form method="POST" action="{{ route('admin.update', $cat->id) }}">
             @csrf
             @method('PUT')
-            <x-active-button>{{ $cat->active ? 'Deactivate' : 'Activate' }}</x-active-button>
+            <x-active-button>{{ $cat->active ? 'Visibility: Shown' : 'Visibility: Hidden' }}</x-active-button>
         </form>
         <a class="font-medium text-2xl text-blue-200 hover:underline" href="{{route('cats-list.edit', $cat->id)}}">
             Edit</a>

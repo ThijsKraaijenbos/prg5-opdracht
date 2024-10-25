@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 //Dit is om login geschiedenis op te slaan, dit kan ik later gebruiken voor diepere validatie. (checken of een gebruiker X aantal keer is ingelogd)
-class LoginHistorySaver extends Model
+class LoginHistory extends Model
 {
     use HasFactory;
 

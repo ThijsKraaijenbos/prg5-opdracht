@@ -6,6 +6,7 @@ use App\Http\Controllers\CatController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
@@ -26,4 +27,5 @@ Route::get('/about',  [AboutController::class, 'index'])->name('about');
 Route::get('/contact',  [ContactController::class, 'index'])->name('contact');
 
 Route::resource('cats',  CatController::class)->names('cats-list');
-Route::resource('admin',  AdminController::class)->names('admin');
+Route::resource('admin', AdminController::class)->names('admin')->middleware(['\App\Http\Middleware\Admin::class']);
+

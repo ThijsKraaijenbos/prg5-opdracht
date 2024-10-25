@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
-use App\Models\LoginHistorySaver;
+use App\Models\LoginHistory;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -28,7 +28,9 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        $login = new LoginHistorySaver();
+        $login = new LoginHistory();
+        $login->user_id = $request->user()->id;
+        $login->save();
 
         $request->session()->regenerate();
 

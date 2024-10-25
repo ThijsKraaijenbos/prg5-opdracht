@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cat;
+use App\Models\LoginHistory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use phpDocumentor\Reflection\DocBlock\Tags\Return_;
+use function Laravel\Prompts\alert;
 
 class CatController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index() // localhost/cats
+    public function index()
     {
         $cats = Cat::all()->where('active', true);
         return view('catslist', compact('cats'));
@@ -19,9 +23,11 @@ class CatController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create() // products/create
+    public function create()
     {
-        return view('create');
+        $loginCount = LoginHistory::all()->where('user_id', auth()->id())->count();
+
+        return view('create', compact('loginCount'));
     }
 
     /**

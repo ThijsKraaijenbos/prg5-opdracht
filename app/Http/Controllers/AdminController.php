@@ -9,12 +9,9 @@ class AdminController extends Controller
 {
     public function index()
     {
-        if (auth()->user() !== null && strtolower(auth()->user()->role) === "admin") {
-            $cats = Cat::all();
+
+        $cats = Cat::all();
             return view('admin.index', compact('cats'));
-        } else {
-            abort(403);
-        }
     }
 
     public function update(string $id)
