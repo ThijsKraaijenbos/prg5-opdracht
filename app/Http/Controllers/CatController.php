@@ -72,7 +72,7 @@ class CatController extends Controller
      */
     public function edit(Cat $cat)
     {
-        if (strtolower(auth()->user()->role) === "admin" || $cat->user_id !== auth()->id()) {
+        if (strtolower(auth()->user()->role) === "admin" || $cat->user_id === auth()->id()) {
             return view('edit', compact('cat'));
         } else {
             abort(403);
@@ -101,6 +101,7 @@ class CatController extends Controller
             $base64 = base64_encode($image);
             $cat->image = $base64;
         }
+        $cat->tags =
 
         $cat->save();
         return redirect()->route('cats-list.index');

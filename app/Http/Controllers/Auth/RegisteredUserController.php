@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\LoginHistory;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -51,6 +52,10 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'image' => $base64
         ]);
+
+        $login = new LoginHistory();
+        $login->user_id = $request->user()->id;
+        $login->save();
 
         event(new Registered($user));
 
