@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cat;
 use App\Models\LoginHistory;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
@@ -17,6 +18,7 @@ class CatController extends Controller
     public function index()
     {
         $cats = Cat::all()->where('active', true);
+
         return view('catslist', compact('cats'));
     }
 
@@ -26,8 +28,8 @@ class CatController extends Controller
     public function create()
     {
         $loginCount = LoginHistory::all()->where('user_id', auth()->id())->count();
-
-        return view('create', compact('loginCount'));
+        $tags = Tag::all();
+        return view('create', compact('loginCount', 'tags'));
     }
 
     /**
@@ -39,7 +41,12 @@ class CatController extends Controller
             'name' => 'required',
             'description' => 'required|min:10',
             'image' => 'required|file|max:2048',
-        ]);
+            'tags' => 'required',
+        ],
+            [
+                'tags.required' => "Select one or more tag(s)"
+            ]
+        );
 
         $cat = new Cat();
         $cat->name = $request->input('name');
@@ -54,6 +61,9 @@ class CatController extends Controller
         $cat->active = 1;
 
         $cat->save();
+        foreach ($request->input('tags') as $tag) {
+            $cat->tags()->attach($tag);
+        }
 
         return redirect()->route('cats-list.index');
     }
@@ -64,6 +74,7 @@ class CatController extends Controller
     public function show(string $id)
     {
         $cat = Cat::findOrFail($id);
+//        $tags = $cat->tags;
         return view('show', compact('cat'));
     }
 

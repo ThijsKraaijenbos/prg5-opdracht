@@ -1,16 +1,31 @@
 @props([
     'cat',
+    'tags',
     'list'
 ])
 <?php $list = $list ?? "" ?>
 <div class='cc-2 m-5 bg-cc-2 text-slate-50 p-5 border-[3px] border-slate-50 rounded-2xl flex flex-row justify-between'>
     <div class="flex flex-col">
         <div>
-            <img class="h-60 w-60 " src="data:image/webp;base64, {{$cat->image}}" alt="Image of {{$cat->name}}">
-            <h1 class="text-2xl font-bold">{{$cat->name}}</h1>
-            <p class="line-clamp-2">{{$cat->description}}</p>
+            <img class="h-60 w-60 rounded-2xl " src="data:image/webp;base64, {{$cat->image}}"
+                 alt="Image of {{$cat->name}}">
+            <h1 class="text-4xl font-bold mb-4">{{$cat->name}}</h1>
 
+            <div class="mb-4">
+                <p class="text-xl font-bold">Description</p>
+                <p>{{$cat->description}}</p>
+            </div>
 
+            @if (!$list)
+                <div>
+                    <p class="text-xl font-bold">Tags</p>
+                    <ul class="list-disc ml-3">
+                        @foreach($cat->tags as $tag)
+                            <li>{{ $tag->name }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
         <div class="flex justify-items-end flex-col mt-5">
 
