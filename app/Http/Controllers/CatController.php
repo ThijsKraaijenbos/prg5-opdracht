@@ -18,8 +18,8 @@ class CatController extends Controller
     public function index()
     {
         $cats = Cat::all()->where('active', true);
-
-        return view('catslist', compact('cats'));
+        $tags = Tag::all();
+        return view('catslist', compact('cats', 'tags'));
     }
 
     /**
@@ -59,7 +59,12 @@ class CatController extends Controller
         $cat->image = $base64;
 
         $cat->user_id = auth()->id();
-        $cat->active = 1;
+
+        if (strtolower(auth()->user()->role) === "admin") {
+            $cat->active = 1;
+        } else {
+            $cat->active = 0;
+        }
 
         $cat->save();
         foreach ($request->input('tags') as $tag) {
@@ -75,7 +80,6 @@ class CatController extends Controller
     public function show(string $id)
     {
         $cat = Cat::findOrFail($id);
-//        $tags = $cat->tags;
         return view('show', compact('cat'));
     }
 
@@ -143,14 +147,27 @@ class CatController extends Controller
      */
     public function search(Request $request)
     {
-        $request->validate(
-            [
-                'input' => 'required',
-            ]
-        );
+        $tags = Tag::all();
+        $query = Cat::query();
 
         $search = $request->input('input');
-        $cats = Cat::query()->whereAny(['name', 'description'], 'LIKE', "%{$search}%")->get();
-        return view('catslist', compact('cats'));
+        $selectedTags = $request->input('tags', []);
+
+        if (isset($search) && $search != null) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%")
+                    ->orWhere('description', 'LIKE', "%{$search}%");
+            });
+        }
+
+        if (isset($selectedTags) && $selectedTags != null) {
+            $query->whereHas('tags', function ($query) use ($selectedTags) {
+                $query->whereIn('tag_id', $selectedTags);
+            });
+        }
+
+        $cats = $query->get();
+
+        return view('catslist', compact('cats', 'tags'));
     }
 }

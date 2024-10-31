@@ -53,13 +53,13 @@ class RegisteredUserController extends Controller
             'image' => $base64
         ]);
 
-        $login = new LoginHistory();
-        $login->user_id = $request->user()->id;
-        $login->save();
-
         event(new Registered($user));
 
         Auth::login($user);
+
+        $login = new LoginHistory();
+        $login->user_id = auth()->id();
+        $login->save();
 
         return redirect(route('dashboard', absolute: false));
     }

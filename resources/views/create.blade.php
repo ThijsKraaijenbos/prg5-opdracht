@@ -16,7 +16,7 @@
                 <x-text-input type="file" name="image" id="image" accept="image/png, image/jpg, image/jpeg"/>
 
                 <x-input-label for="tags" class="mt-5">Tags</x-input-label>
-                <select name="tags[]" id="tags[]" multiple="" class="h-max">
+                <select name="tags[]" id="tags[]" multiple="" class="h-[70%]">
                     <option value="0" {{ old('tags') ? '' : 'selected'}} disabled>Select 1 or more tags (hold ctrl or
                         cmd)
                     </option>

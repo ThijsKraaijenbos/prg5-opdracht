@@ -29,27 +29,30 @@
         </div>
         <div class="flex justify-between flex-row mt-5">
             <div class="left">
-            @if($list != "" && auth()->id() !== $cat->user_id)
-                <div>
-                    <a class="font-medium text-2xl text-blue-200 hover:underline"
-                       href="{{ $list ? route('cats-list.show', $cat->id) : route('cats-list.index') }}">{{$list ? 'Details' : 'Go back'}}</a>
-                </div>
-            @endif
-            @auth
-                @if($list != "" && auth()->id() === $cat->user_id)
-                    <div>
-                        <a class="font-medium text-2xl text-blue-200 hover:underline"
-                           href="{{ $list ? route('cats-list.show', $cat->id) : route('cats-list.index') }}">{{$list ? 'Details' : 'Go back'}}</a>
-                        <a class="font-medium text-2xl text-blue-200 hover:underline"
-                           href="{{route('cats-list.edit', $cat->id)}}">| Edit</a>
-                    </div>
-                    <form method="POST" action="{{route('cats-list.destroy', $cat->id)}}">
-                        @method('DELETE')
-                        @csrf
-                        <x-primary-button type="submit">Delete</x-primary-button>
-                    </form>
-                @endisset
-            @endauth
+                @if($list != "" && auth()->id() !== $cat->user_id)
+                    @if (isset(auth()->user()->role) && strtolower(auth()->user()->role) === "admin")
+                    @else
+                        <div>
+                            <a class="font-medium text-2xl text-blue-200 hover:underline"
+                               href="{{ $list ? route('cats-list.show', $cat->id) : route('cats-list.index') }}">{{$list ? 'Details' : 'Go back'}}</a>
+                        </div>
+                    @endif
+                @endif
+                @auth
+                    @if($list != "" && auth()->id() === $cat->user_id || strtolower(auth()->user()->role) === "admin")
+                        <div>
+                            <a class="font-medium text-2xl text-blue-200 hover:underline"
+                               href="{{ $list ? route('cats-list.show', $cat->id) : route('cats-list.index') }}">{{$list ? 'Details' : 'Go back'}}</a>
+                            <a class="font-medium text-2xl text-blue-200 hover:underline"
+                               href="{{route('cats-list.edit', $cat->id)}}">| Edit</a>
+                        </div>
+                        <form method="POST" action="{{route('cats-list.destroy', $cat->id)}}">
+                            @method('DELETE')
+                            @csrf
+                            <x-primary-button type="submit">Delete</x-primary-button>
+                        </form>
+                    @endisset
+                @endauth
             </div>
             <img src="data:image/jpeg;base64,{{ $cat->user->image }}" alt="Image of associated user for {{$cat->name}}"
                  class="h-16 w-16 rounded-full"/>
