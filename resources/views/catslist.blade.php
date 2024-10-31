@@ -1,7 +1,9 @@
 <x-layout>
     <x-nav></x-nav>
     <div class="grid grid-cols-3">
-        @foreach ($cats as $cat)
+
+        {{--        reverse om nieuwste eerst te laden --}}
+        @foreach ($cats->reverse() as $cat)
             <x-cat :cat="$cat" :list="true"></x-cat>
         @endforeach
 

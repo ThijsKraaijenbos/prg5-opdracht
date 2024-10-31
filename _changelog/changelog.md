@@ -1,5 +1,8 @@
 <img src="./changelog_img/changelog.png" alt="drawing" width="200"/>
 
+**31/10/2024** - Tags kunnen worden toegevoegd, geedit, en getoond bij katten. + Bug fixes + bestanden die in recente
+commits niet aan de git waren toegevoegd zijn er nu wel.
+
 **26/10/2024** - Admin pagina authenticatie wordt nu afgehandeld door een middleware
 
 **22/10/2024** - Basis adminpagina toegevoegd waarbij je de visibility van katten kan togglen.
