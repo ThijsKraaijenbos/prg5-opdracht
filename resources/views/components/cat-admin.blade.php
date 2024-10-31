@@ -4,7 +4,7 @@
 <div
     class='cc-2 m-5 bg-cc-2 text-slate-50 p-5 border-[3px] border-slate-50 rounded-2xl flex flex-row gap-5 items-center justify-between w-[50vw]'>
     <div class="flex flex-col gap-2 max-w-[70%]">
-        <h1>Name: {{$cat->name}}</h1>
+        <h1>Name: {{ucfirst($cat->name)}}</h1>
         <p>Description: {{$cat->description}}</p>
         <img class="h-32 w-32 " src="data:image/webp;base64, {{$cat->image}}" alt="Image of {{$cat->name}}">
         <img class="h-16 w-16 rounded-full" src="data:image/webp;base64, {{$cat->user->image}}"

@@ -37,12 +37,13 @@ class CatController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required|min:10',
-            'image' => 'required|file|max:2048',
-            'tags' => 'required',
-        ],
+        $request->validate(
+            [
+                'name' => 'required',
+                'description' => 'required|min:10',
+                'image' => 'required|file|max:2048',
+                'tags' => 'required',
+            ],
             [
                 'tags.required' => "Select one or more tag(s)"
             ]
@@ -83,8 +84,9 @@ class CatController extends Controller
      */
     public function edit(Cat $cat)
     {
+        $tags = Tag::all();
         if (strtolower(auth()->user()->role) === "admin" || $cat->user_id === auth()->id()) {
-            return view('edit', compact('cat'));
+            return view('edit', compact('cat', 'tags'));
         } else {
             abort(403);
         }
@@ -96,10 +98,15 @@ class CatController extends Controller
      */
     public function update(Request $request, Cat $cat)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required|min:10',
-        ]);
+        $request->validate(
+            [
+                'name' => 'required',
+                'description' => 'required|min:10',
+                'tags' => 'required',
+            ],
+            [
+                'tags.required' => "Select one or more tag(s)"
+            ]);
 
         $cat = Cat::findOrFail($cat->id);
 
@@ -112,9 +119,13 @@ class CatController extends Controller
             $base64 = base64_encode($image);
             $cat->image = $base64;
         }
-        $cat->tags =
-
         $cat->save();
+
+        $cat->tags()->detach();
+        foreach ($request->input('tags') as $tag) {
+            $cat->tags()->attach($tag);
+        }
+
         return redirect()->route('cats-list.index');
     }
 
