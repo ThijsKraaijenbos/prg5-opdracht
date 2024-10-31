@@ -137,4 +137,20 @@ class CatController extends Controller
         $cat->delete();
         return redirect()->route('cats-list.index');
     }
+
+    /**
+     * Search & filter functionalities
+     */
+    public function search(Request $request)
+    {
+        $request->validate(
+            [
+                'input' => 'required',
+            ]
+        );
+
+        $search = $request->input('input');
+        $cats = Cat::query()->whereAny(['name', 'description'], 'LIKE', "%{$search}%")->get();
+        return view('catslist', compact('cats'));
+    }
 }

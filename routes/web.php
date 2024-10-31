@@ -25,6 +25,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about',  [AboutController::class, 'index'])->name('about');
 Route::get('/contact',  [ContactController::class, 'index'])->name('contact');
 
+Route::get('cats/search', [CatController::class, 'search'])->name('cats-list.search');
 Route::resource('cats',  CatController::class)->names('cats-list');
 Route::resource('admin', AdminController::class)->names('admin')->middleware(['\App\Http\Middleware\Admin::class']);
 
