@@ -8,7 +8,7 @@
         <p>Description: {{$cat->description}}</p>
         <img class="h-32 w-32 " src="data:image/webp;base64, {{$cat->image}}" alt="Image of {{$cat->name}}">
         <img class="h-16 w-16 rounded-full" src="data:image/webp;base64, {{$cat->user->image}}"
-             alt="Image of {{$cat->user->image}}">
+             alt="Image of {{$cat->user->name}}">
     </div>
 
     <div class="max-w-[30%] flex flex-col align-middle">

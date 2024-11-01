@@ -41,7 +41,7 @@ class CatController extends Controller
             [
                 'name' => 'required',
                 'description' => 'required|min:10',
-                'image' => 'required|file|max:2048',
+                'image' => 'required|file|max:2048|mimes:png,gif,jpeg,jpg',
                 'tags' => 'required',
             ],
             [

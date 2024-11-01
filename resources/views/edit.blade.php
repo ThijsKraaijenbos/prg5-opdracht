@@ -25,7 +25,8 @@
             @foreach($tags as $tag)
 
                 <option
-                    {{ in_array($tag['id'], old('tags') ?? $null = [] ) ? 'selected' : '' }} value="{{$tag['id']}}">{{ $tag['name'] }}</option>
+                    {{--                    pluck is om te checken welke tags de cat al heeft --}}
+                    {{ in_array($tag['id'], old('tags') ?? $cat->tags->pluck('id')->all()) ? 'selected' : '' }} value="{{$tag['id']}}">{{ $tag['name'] }}</option>
             @endforeach
 
         </select>

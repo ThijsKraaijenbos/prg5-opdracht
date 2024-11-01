@@ -11,7 +11,7 @@ class AdminController extends Controller
     {
 
         $cats = Cat::all();
-            return view('admin.index', compact('cats'));
+        return view('admin.index', compact('cats'));
     }
 
     public function update(string $id)
@@ -20,10 +20,8 @@ class AdminController extends Controller
 
         $cat->active = !$cat->active;
 
-        // Save the updated model
         $cat->save();
 
-        // Redirect back to the admin page with a success message
-        return redirect()->route('admin.index')->with('success', 'Cat status updated successfully.');
+        return redirect()->route('admin.index');
     }
 }

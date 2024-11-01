@@ -54,7 +54,7 @@
                     @endisset
                 @endauth
             </div>
-            <img src="data:image/jpeg;base64,{{ $cat->user->image }}" alt="Image of associated user for {{$cat->name}}"
+            <img src="data:image/jpeg;base64,{{ $cat->user->image }}" alt="Image of {{$cat->user->name}}"
                  class="h-16 w-16 rounded-full"/>
         </div>
     </div>

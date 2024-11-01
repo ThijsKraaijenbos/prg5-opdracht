@@ -13,7 +13,7 @@
                 <x-custom-textarea>{{old('description')}}</x-custom-textarea>
 
                 <x-input-label for="image" class="mt-5">Image</x-input-label>
-                <x-text-input type="file" name="image" id="image" accept="image/png, image/jpg, image/jpeg"/>
+                <x-text-input type="file" name="image" id="image" accept="image/png, image/gif, image/jpg, image/jpeg"/>
 
                 <x-input-label for="tags" class="mt-5">Tags</x-input-label>
                 <select name="tags[]" id="tags[]" multiple="" class="h-[70%]">

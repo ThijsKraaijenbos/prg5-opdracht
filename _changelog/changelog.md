@@ -1,5 +1,7 @@
 <img src="./changelog_img/changelog.png" alt="drawing" width="200"/>
 
+**1/11/2024** - Bug fixes + Tags die een kat al had worden nu automatisch geladen op de Edit pagina.
+
 **31/10/2024** - Search bar & Filtering toegevoegd (werken samen met elkaar, dus je kunt filters en de search bar
 tegelijk gebruiken om specifiek te zoeken)
 **31/10/2024** - Tags kunnen worden toegevoegd, geedit, en getoond bij katten. + Bug fixes + bestanden die in recente
