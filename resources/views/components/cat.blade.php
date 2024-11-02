@@ -4,7 +4,8 @@
     'list'
 ])
 <?php $list = $list ?? "" ?>
-<div class='cc-2 m-5 bg-cc-2 text-slate-50 p-5 border-[3px] border-slate-50 rounded-2xl flex flex-row justify-between'>
+<div
+    class='cc-2 m-5 bg-cc-2 text-slate-50 p-5 border-[3px] border-slate-50 rounded-2xl flex flex-row justify-between relative'>
     <div class="flex flex-col min-w-max">
         <div>
             <img class="h-60 w-60 rounded-2xl " src="data:image/webp;base64, {{$cat->image}}"
@@ -54,8 +55,8 @@
                     @endisset
                 @endauth
             </div>
-            <img src="data:image/jpeg;base64,{{ $cat->user->image }}" alt="Image of {{$cat->user->name}}"
-                 class="h-16 w-16 rounded-full"/>
+            <img src="data:image/webp;base64,{{ $cat->user->image }}" alt="Image of {{$cat->user->name}}"
+                 class="h-16 w-16 rounded-full absolute right-5 bottom-5"/>
         </div>
     </div>
 

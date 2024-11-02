@@ -1,9 +1,10 @@
-<x-layout>
+<x-layout pagename="List of all cats">
     <x-nav></x-nav>
     <form method="GET" action="{{ route('cats-list.search')}}" class="flex items-end">
         <div class="ml-5">
             <x-input-label for="tags">Tags</x-input-label>
-            <select name="tags[]" id="tags[]" multiple="" class="h-[70%]">
+            <select name="tags[]" id="tags[]" multiple=""
+                    class="h-[70%] flex flex-col cc-2 bg-gray-800 text-slate-50 border-[3px] border-slate-50 rounded-2xl">
                 <option value="0" {{ old('tags') ? '' : 'selected'}} disabled>Select 1 or more tags (hold ctrl or
                     cmd)
                 </option>

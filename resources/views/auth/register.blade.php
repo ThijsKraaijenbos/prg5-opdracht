@@ -1,6 +1,8 @@
-<x-nav></x-nav>
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+<x-layout>
+    <x-nav></x-nav>
+    <div class="flex items-center h-[80vh] justify-center">
+        <form class="w-[30vw] flex flex-col cc-2 m-5 bg-cc-2 text-slate-50 p-5 border-[3px] border-slate-50 rounded-2xl"
+              method="POST" action="{{ route('register') }}">
         @csrf
 
         <!-- Name -->
@@ -53,4 +55,5 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+    </div>
+</x-layout>

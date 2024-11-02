@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout pagename="Add a new cat">
     <x-nav></x-nav>
 
     <div class="flex flex-row">
@@ -16,7 +16,8 @@
                 <x-text-input type="file" name="image" id="image" accept="image/png, image/gif, image/jpg, image/jpeg"/>
 
                 <x-input-label for="tags" class="mt-5">Tags</x-input-label>
-                <select name="tags[]" id="tags[]" multiple="" class="h-[70%]">
+                <select name="tags[]" id="tags[]" multiple=""
+                        class="h-[70%] flex flex-col cc-2 bg-gray-800 text-slate-50 border-[3px] border-slate-50 rounded-2xl">
                     <option value="0" {{ old('tags') ? '' : 'selected'}} disabled>Select 1 or more tags (hold ctrl or
                         cmd)
                     </option>
@@ -40,5 +41,6 @@
     @else
         <h1 class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 max-w-max m-10 text-5xl">
             Je moet eerst 3 keer inloggen voordat je een kat mag toevoegen</h1>
+        <p>Je moet nog {{ 3 - $loginCount}} keer inloggen om een kat toe te voegen</p>
     @endif
 </x-layout>

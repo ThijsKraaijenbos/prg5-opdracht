@@ -19,7 +19,8 @@
 
 
         <x-input-label for="tags" class="mt-5">Tags</x-input-label>
-        <select name="tags[]" id="tags[]" multiple="" class="h-[70%]">
+        <select name="tags[]" id="tags[]" multiple=""
+                class="h-[70%] flex flex-col cc-2 bg-gray-800 text-slate-50 border-[3px] border-slate-50 rounded-2xl">
             <option value="0" {{ old('tags') ? '' : 'selected'}} disabled>Select 1 or more tags (hold ctrl or cmd)
             </option>
             @foreach($tags as $tag)

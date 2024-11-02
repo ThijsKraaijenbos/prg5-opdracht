@@ -27,9 +27,14 @@ class CatController extends Controller
      */
     public function create()
     {
-        $loginCount = LoginHistory::all()->where('user_id', auth()->id())->count();
-        $tags = Tag::all();
-        return view('create', compact('loginCount', 'tags'));
+        if (auth()->user()) {
+            $loginCount = LoginHistory::all()->where('user_id', auth()->id())->count();
+            $tags = Tag::all();
+            return view('create', compact('loginCount', 'tags'));
+        } else {
+            abort(403);
+        }
+
     }
 
     /**
@@ -148,7 +153,7 @@ class CatController extends Controller
     public function search(Request $request)
     {
         $tags = Tag::all();
-        $query = Cat::query();
+        $query = Cat::query()->where('active', true);
 
         $search = $request->input('input');
         $selectedTags = $request->input('tags', []);
