@@ -94,7 +94,7 @@ class CatController extends Controller
     public function edit(Cat $cat)
     {
         $tags = Tag::all();
-        if (strtolower(auth()->user()->role) === "admin" || $cat->user_id === auth()->id()) {
+        if ($cat->user_id === auth()->id() || isset(auth()->user()->role) && auth()->user()->role === "admin") {
             return view('edit', compact('cat', 'tags'));
         } else {
             abort(403);

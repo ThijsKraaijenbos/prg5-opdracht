@@ -39,8 +39,10 @@
 
     {{-- geef error message als je niet 3 keer bent ingelogd (diepere validatie opdracht) --}}
     @else
-        <h1 class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 max-w-max m-10 text-5xl">
+        <div class="p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:text-red-400 max-w-max m-10 text-5xl">
+            <h1>
             Je moet eerst 3 keer inloggen voordat je een kat mag toevoegen</h1>
         <p>Je moet nog {{ 3 - $loginCount}} keer inloggen om een kat toe te voegen</p>
+        </div>
     @endif
 </x-layout>
