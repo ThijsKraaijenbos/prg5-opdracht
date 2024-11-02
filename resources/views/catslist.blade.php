@@ -1,5 +1,8 @@
 <x-layout pagename="List of all cats">
     <x-nav></x-nav>
+    @if (session('success'))
+        <h1 class='m-5 bg-cc-2 text-slate-50 p-5 border-[3px] border-slate-50 rounded-2xl flex flex-row justify-between relative w-max'>{{ session('success') }}</h1>
+    @endif
     <form method="GET" action="{{ route('cats-list.search')}}" class="flex items-end">
         <div class="ml-5">
             <x-input-label for="tags">Tags</x-input-label>

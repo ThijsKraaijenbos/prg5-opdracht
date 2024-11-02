@@ -76,7 +76,11 @@ class CatController extends Controller
             $cat->tags()->attach($tag);
         }
 
-        return redirect()->route('cats-list.index');
+        if (auth()->user()->role === "admin") {
+            return redirect()->route('cats-list.index')->with('success', 'Your cat has been submitted. Because you\'re an admin it has been automatically verified!');
+        } else {
+            return redirect()->route('cats-list.index')->with('success', 'Your cat has been submitted. Please wait for an admin to verify it!');
+        }
     }
 
     /**

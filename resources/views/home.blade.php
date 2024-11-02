@@ -29,7 +29,7 @@
                 individuality and charm of each of our four-legged friends!</p>
         </div>
         <div
-            class='cc-2 m-5 bg-gray-800 text-slate-50 p-5 border-[3px] border-slate-50 rounded-2xl flex flex-col justify-between max-w-[60%]'>
+            class='cc-2 m-5 bg-gray-800 text-slate-50 p-5 border-[3px] border-slate-50 rounded-2xl flex flex-col justify-between max-w-[30%]'>
             <h1 class="text-4xl font-bold whitespace-nowrap">Recently added</h1>
             <x-cat :cat="$recentCat" :list="true"></x-cat>
         </div>

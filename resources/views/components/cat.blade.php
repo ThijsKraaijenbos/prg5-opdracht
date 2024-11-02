@@ -6,7 +6,7 @@
 <?php $list = $list ?? "" ?>
 <div
     class='cc-2 m-5 bg-cc-2 text-slate-50 p-5 border-[3px] border-slate-50 rounded-2xl flex flex-row justify-between relative'>
-    <div class="flex flex-col min-w-max">
+    <div class="flex flex-col min-w-min">
         <div>
             <img class="h-60 w-60 rounded-2xl " src="data:image/webp;base64, {{$cat->image}}"
                  alt="Image of {{$cat->name}}">
@@ -14,7 +14,7 @@
 
             <div class="mb-4">
                 <p class="text-xl font-bold">Description</p>
-                <p>{{$cat->description}}</p>
+                <p class="break-words line-clamp-2">{{$cat->description}}</p>
             </div>
 
             @if (!$list)
