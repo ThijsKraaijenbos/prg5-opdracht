@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout pagename="Edit page for {{$cat->name}}">
     <x-nav></x-nav>
 
     <div class="flex flex-row">

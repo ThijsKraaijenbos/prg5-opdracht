@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout pagename="Admin page">
     <x-nav></x-nav>
 
 

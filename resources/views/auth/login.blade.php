@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout pagename="Login">
     <x-nav></x-nav>
     <div class="flex items-center h-[80vh] justify-center">
         <!-- Session Status -->
