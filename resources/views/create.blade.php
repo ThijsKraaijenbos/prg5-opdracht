@@ -17,7 +17,7 @@
 
                 <x-input-label for="tags" class="mt-5">Tags</x-input-label>
                 <select name="tags[]" id="tags[]" multiple=""
-                        class="h-[70%] flex flex-col cc-2 bg-gray-800 text-slate-50 border-[3px] border-slate-50 rounded-2xl">
+                        class="min-h-50 max-h-50 flex flex-col cc-2 bg-gray-800 text-slate-50 border-[3px] border-slate-50 rounded-2xl">
                     <option value="0" {{ old('tags') ? '' : 'selected'}} disabled>Select 1 or more tags (hold ctrl or
                         cmd)
                     </option>
@@ -39,10 +39,11 @@
 
     {{-- geef error message als je niet 3 keer bent ingelogd (diepere validatie opdracht) --}}
     @else
-        <div class="p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:text-red-400 max-w-max m-10 text-5xl">
-            <h1>
-            Je moet eerst 3 keer inloggen voordat je een kat mag toevoegen</h1>
-        <p>Je moet nog {{ 3 - $loginCount}} keer inloggen om een kat toe te voegen</p>
+        <div class="m-5 text-2xl bg-red-400 text-slate-50 p-5 border-[3px] border-slate-50 rounded-2xl">
+            <h1 class="text-4xl">
+                You need to log in 3 times to be able to add a cat</h1>
+            <p class="text-2xl">Please log in <span class="text-green-300 font-bold">{{ 3 - $loginCount}}</span> more
+                times to add a cat</p>
         </div>
     @endif
 </x-layout>

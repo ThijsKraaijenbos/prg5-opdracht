@@ -7,7 +7,7 @@
         <div class="ml-5">
             <x-input-label for="tags">Tags</x-input-label>
             <select name="tags[]" id="tags[]" multiple=""
-                    class="h-[70%] flex flex-col cc-2 bg-gray-800 text-slate-50 border-[3px] border-slate-50 rounded-2xl">
+                    class="min-h-50 max-h-50 flex flex-col cc-2 bg-gray-800 text-slate-50 border-[3px] border-slate-50 rounded-2xl">
                 <option value="0" {{ old('tags') ? '' : 'selected'}} disabled>Select 1 or more tags (hold ctrl or
                     cmd)
                 </option>
@@ -33,7 +33,6 @@
         @foreach ($cats->reverse() as $cat)
             <x-cat :cat="$cat" :list="true"></x-cat>
         @endforeach
-
     </div>
     @if(empty($cats->all()) && !request()->has('input'))
         <div class="m-4 text-2xl">

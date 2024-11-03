@@ -1,6 +1,6 @@
 <nav class="p-2 flex flex-row justify-between max-h-min items-center">
     <div class="flex flex-row items-center">
-        <x-navlink href="/" :active="request()->is('/')">Home</x-navlink>
+        <x-navlink href="{{ route('home') }}" :active="request()->is('/') || request()->is('home')">Home</x-navlink>
         <x-navlink href="{{ route('cats-list.index') }}"
                    :active="request()->is('cats') || request()->is('cats/*' && !request()->is('cats/create'))">Cats
         </x-navlink>

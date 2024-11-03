@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .active {
-    background-color: coral !important;
+    border-color: #526D82 !important;
 }

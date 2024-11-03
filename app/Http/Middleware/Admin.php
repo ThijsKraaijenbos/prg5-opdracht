@@ -12,7 +12,7 @@ class Admin
         if (auth()->user() !== null && strtolower(auth()->user()->role) === "admin") {
             return $next($request);
         } else {
-            abort(403);
+            return redirect('login')->with('msg', 'You are not allowed to access the Admin page. This may be because you\'re not logged in, or don\'t have the right permissions.');
         }
     }
 }

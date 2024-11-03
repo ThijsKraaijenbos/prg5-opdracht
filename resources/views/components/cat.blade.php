@@ -55,7 +55,7 @@
                     @endisset
                 @endauth
             </div>
-            <img src="data:image/webp;base64,{{ $cat->user->image }}" alt="Image of {{$cat->user->name}}"
+            <img src="data:image/webp;base64,{{ $cat->user->image ?? "" }}" alt="Image of {{$cat->user->name}}"
                  class="h-16 w-16 rounded-full absolute right-5 bottom-5"/>
         </div>
     </div>

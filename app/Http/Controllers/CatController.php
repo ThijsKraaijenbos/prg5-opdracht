@@ -32,7 +32,7 @@ class CatController extends Controller
             $tags = Tag::all();
             return view('create', compact('loginCount', 'tags'));
         } else {
-            abort(403);
+            return redirect('login')->with('msg', 'You are not allowed to access the Create page as a guest. Please make an account!');
         }
 
     }
@@ -101,7 +101,7 @@ class CatController extends Controller
         if ($cat->user_id === auth()->id() || isset(auth()->user()->role) && auth()->user()->role === "admin") {
             return view('edit', compact('cat', 'tags'));
         } else {
-            abort(403);
+            return redirect('login')->with('msg', 'You are not allowed to access the Edit page for this specific cat. This may be because you\'re not logged in, or don\'t have the right permissions.');
         }
 
     }

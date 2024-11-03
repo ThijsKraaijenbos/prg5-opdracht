@@ -31,7 +31,17 @@
         <div
             class='cc-2 m-5 bg-gray-800 text-slate-50 p-5 border-[3px] border-slate-50 rounded-2xl flex flex-col justify-between max-w-[30%]'>
             <h1 class="text-4xl font-bold whitespace-nowrap">Recently added</h1>
-            <x-cat :cat="$recentCat" :list="true"></x-cat>
+            @isset($recentCat)
+                <x-cat :cat="$recentCat" :list="true"></x-cat>
+            @endisset
+            @if(empty($recentCat))
+                <div class="m-4 text-2xl">
+                    <h1 class="text-slate-50">There are currently no cats! Be the first person to add a cat with the
+                        link
+                        below!</h1>
+                    <a class="text-blue-300 underline" href="{{ route('cats-list.create') }}">Add a cat</a>
+                </div>
+            @endif
         </div>
     </div>
 </x-layout>
