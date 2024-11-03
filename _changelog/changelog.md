@@ -1,9 +1,16 @@
 <img src="./changelog_img/changelog.png" alt="drawing" width="200"/>
 
+
+**3/11/2024** - Initial release op Live Server https://sillycats.free.nf/public/ <br>
+
+**3/11/2024** - Inrichten live server omgeving en alles werkend gekregen daarop (heb ik 7 uur over gedaan 😭) <br>
+
+**2/11/2024** - Bug fixes + styling changes. + Kleine features <br>
+
 **1/11/2024** - Bug fixes + Tags die een kat al had worden nu automatisch geladen op de Edit pagina.
 
 **31/10/2024** - Search bar & Filtering toegevoegd (werken samen met elkaar, dus je kunt filters en de search bar
-tegelijk gebruiken om specifiek te zoeken)
+tegelijk gebruiken om specifiek te zoeken) <br>
 **31/10/2024** - Tags kunnen worden toegevoegd, geedit, en getoond bij katten. + Bug fixes + bestanden die in recente
 commits niet aan de git waren toegevoegd zijn er nu wel.
 
